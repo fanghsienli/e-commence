@@ -46,14 +46,7 @@ const useCartStore = create<CartStore>()(
               };
             } else {
               const newCartItem = {
-                id: product.id,
-                title: product.title,
-                description: product.description,
-                price: product.price,
-                discountPercentage: product.discountPercentage,
-                rating: product.rating,
-                stock: product.stock,
-                thumbnail: product.thumbnail,
+                ...product,
                 quantity: 1,
               };
 

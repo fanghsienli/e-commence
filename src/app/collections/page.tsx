@@ -1,6 +1,5 @@
 "use client";
 import FilterSection from "./FilterSection";
-import TopNavBar from "./TopNavBar";
 import ProductSection from "./ProductSection";
 
 import { useEffect } from "react";
@@ -27,8 +26,7 @@ export default function Collections() {
   }, [categories]);
 
   return (
-    <main className="max-w-full mx-auto mt-10 px-4">
-      <TopNavBar />
+    <main className="max-w-full mx-auto px-4">
       <div className="grid grid-cols-8 py-8 gap-10">
         <FilterSection />
         <div className="col-span-6">

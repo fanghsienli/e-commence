@@ -12,6 +12,6 @@ export type Product = {
   images: string[];
 };
 
-export type CartItem = Omit<Product, "brand" | "images" | "category"> & {
+export type CartItem = Product & {
   quantity: number;
 };
