@@ -144,8 +144,6 @@ export default function Products({
           </button>
         </div>
       </div>
-
-      {/* Options */}
       <div className="mt-4 lg:row-span-2 lg:mt-0">
         <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
           {product.title}
@@ -155,7 +153,6 @@ export default function Products({
         </p>
 
         <div className="py-10 lg:col-span-2 lg:col-start-1  lg:pb-16 lg:pr-8 lg:pt-6">
-          {/* Description and details */}
           <div>
             <h3 className="sr-only">Description</h3>
             <div className="space-y-6">

@@ -162,7 +162,6 @@ export default function Cart() {
               </div>
               <div className="flex justify-between items-center w-full">
                 <p className="text-base leading-4 text-gray-800">Discount</p>
-                {/* Calculate the total discount as a percentage of the original price */}
                 <p className="text-base leading-4 text-gray-600">
                   -
                   {`S$${(
@@ -182,7 +181,6 @@ export default function Cart() {
               <p className="text-base font-semibold leading-4 text-gray-800">
                 Total
               </p>
-              {/* Display the discounted total price */}
               <p className="text-base font-semibold leading-4 text-gray-600">
                 {`S$${getTotalDiscountedPrice().toFixed(2)}`}
               </p>
@@ -198,93 +196,4 @@ export default function Cart() {
       </div>
     </div>
   );
-}
-
-{
-  /* <div className="container mx-auto p-8">
-      <div className="flex flex-col">
-        <div className="w-full md:w-2/3 pr-8">
-          <h2 className="text-xl font-semibold mb-4">Your Cart</h2>
-          {cartItems?.map((item) => (
-            <div
-              key={item.id}
-              className="flex items-center justify-between border-b border-gray-300 pb-2 mb-2"
-            >
-              <div
-                className="flex items-center space-x-4 cursor-pointer"
-                onClick={() => handleProductClick(item.id)}
-              >
-               
-                <div>
-                  <p className="font-semibold">{item.title}</p>
-                  <p className="text-gray-500">{item.description}</p>
-                </div>
-              </div>
-              <div className="flex items-center space-x-2">
-                <p className="font-semibold text-green-700">
-                  S$
-                  {(
-                    (item.price * (100 - item.discountPercentage)) /
-                    100
-                  ).toFixed(2)}
-                </p>
-                <div className="flex items-center space-x-2">
-                  <button
-                    onClick={() => removeFromCart(item.id)}
-                    className="px-2 py-1 border border-gray-300"
-                  >
-                    -
-                  </button>
-                  <span>{item.quantity}</span>
-                  <button
-                    onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                    className="px-2 py-1 border border-gray-300"
-                  >
-                    +
-                  </button>
-                  <button
-                    onClick={() => removeFromCart(item.id)}
-                    className="text-red-500"
-                  >
-                    Remove
-                  </button>
-                </div>
-                <p className="font-semibold text-green-700">
-                  S$
-                  {(
-                    (item.price *
-                      item.quantity *
-                      (100 - item.discountPercentage)) /
-                    100
-                  ).toFixed(2)}
-                </p>
-              </div>
-              <div className="flex items-center space-x-2">
-                <span className="text-gray-500 line-through">
-                  S${item.price.toFixed(2)}
-                </span>{" "}
-              </div>
-            </div>
-          ))}
-        </div>
-        <div className="w-full md:w-1/3 mt-4">
-          <div className="bg-white p-4 rounded shadow">
-            <h2 className="text-xl font-semibold mb-4">Cart Summary</h2>
-            <div className="flex justify-between mb-2">
-              <p>Non-Direct Pricing</p>
-              <p className="font-semibold">S${calculateTotal().toFixed(2)}</p>
-            </div>
-            <div className="flex justify-between mb-2">
-              <p>Total</p>
-              <p className="text-red-500 font-semibold">
-                S${calculateTotal().toFixed(2)}
-              </p>
-            </div>
-            <button className="bg-blue-500 text-white px-4 py-2 rounded">
-              Checkout Securely
-            </button>
-          </div>
-        </div>
-      </div>
-    </div> */
 }
