@@ -9,15 +9,19 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-three/drei": "^9.92.1",
+    "@react-three/fiber": "^8.15.12",
     "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18",
+    "three": "^0.159.0",
     "zustand": "^4.4.7"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/three": "^0.159.0",
     "autoprefixer": "^10.0.1",
     "eslint": "^8",
     "eslint-config-next": "14.0.4",

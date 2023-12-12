@@ -1,8 +1,11 @@
 "use client";
 
 import type { Product } from "@/types";
-import { useEffect, useState } from "react";
+import { SetStateAction, useEffect, useState } from "react";
 import useCartStore from "@/store/cartStore";
+
+import { Experience } from "../../../components/Experience";
+import QuickView from "@/components/QuickView";
 
 async function fetchProductById({ id }: { id: number }) {
   try {
@@ -33,6 +36,13 @@ export default function Products({
   const { cartItems, addToCart, updateQuantity } = useCartStore();
   const [product, setProduct] = useState<Product>();
   const [quantity, setQuantity] = useState(0);
+  const [open, setOpen] = useState(false);
+  const [imageIndex, setImageIndex] = useState(0);
+
+  const toggleModal = (index: number) => {
+    setOpen(!open);
+    setImageIndex(index);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -81,11 +91,9 @@ export default function Products({
     <div className="mx-auto max-w-2xl max-h-auto px-4 pb-16 pt-10 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pb-24 lg:pt-16">
       <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8 lg:flex lg:flex-col items-center">
         <div className="lg:block w-full" style={{ height: "600px" }}>
-          <img
-            src={product.images[selectedImage]}
-            alt={product.images[selectedImage]}
-            className="h-full w-full object-cover object-center"
-          />
+          <div className="h-full w-full first-line:w-full flex flex-col items-center justify-between">
+            <Experience />
+          </div>
         </div>
 
         <div className="flex gap-5 w-full h-32 pt-5">
@@ -112,8 +120,8 @@ export default function Products({
           {product.images.map((image, index) => (
             <a
               key={index}
-              className="w-64 group"
-              onClick={() => setSelectedImage(index)}
+              className="w-64 group cursor-pointer"
+              onClick={() => toggleModal(index)}
             >
               <img
                 src={image}
@@ -144,6 +152,8 @@ export default function Products({
           </button>
         </div>
       </div>
+
+      {/* Options */}
       <div className="mt-4 lg:row-span-2 lg:mt-0">
         <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
           {product.title}
@@ -153,6 +163,7 @@ export default function Products({
         </p>
 
         <div className="py-10 lg:col-span-2 lg:col-start-1  lg:pb-16 lg:pr-8 lg:pt-6">
+          {/* Description and details */}
           <div>
             <h3 className="sr-only">Description</h3>
             <div className="space-y-6">
@@ -224,6 +235,15 @@ export default function Products({
           ADD TO CART
         </button>
       </div>
+      {open ? (
+        <QuickView
+          open={open}
+          setOpen={setOpen}
+          photo={product.images[imageIndex]}
+        />
+      ) : (
+        ""
+      )}
     </div>
   );
 }
