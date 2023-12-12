@@ -1,9 +1,9 @@
 "use client";
 import { useEffect, useState } from "react";
-import Range from "./Range";
+import Range from "@/components/Range";
 import useProductsStore from "@/store/productsStore";
 import { useRouter } from "next/navigation";
-import Checkbox from "./Checkbox";
+import Checkbox from "@/components/Checkbox";
 import { convertValidStringQueries } from "@/utilies";
 import Filter from "./Filter";
 

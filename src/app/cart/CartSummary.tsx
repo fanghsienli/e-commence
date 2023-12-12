@@ -2,7 +2,7 @@
 import useCartStore from "@/store/cartStore";
 import { useStripe, useElements } from "@stripe/react-stripe-js";
 
-export default function () {
+export default function CartSummary() {
   const { cartItems } = useCartStore();
   const stripe = useStripe();
   const elements = useElements();

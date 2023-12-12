@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function QuickView({ open, setOpen, photo }: any) {
   return (
     <div className="relative z-10">
@@ -42,7 +44,7 @@ export default function QuickView({ open, setOpen, photo }: any) {
                   </svg>
                 </button>
                 <div className="w-full">
-                  <img
+                  <Image
                     src={photo}
                     alt={photo}
                     className="h-full w-full object-cover object-center"

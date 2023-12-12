@@ -1,6 +1,7 @@
 "use client";
 import useCartStore from "@/store/cartStore";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 export default function NavHeader() {
   const router = useRouter();
@@ -18,7 +19,7 @@ export default function NavHeader() {
             onClick={() => router.push("/collections")}
             className="flex flex-shrink-0 items-center cursor-pointer"
           >
-            <img
+            <Image
               className="h-8 w-auto"
               src="https://tailwindui.com/img/logos/mark.svg?color=red&shade=500"
               alt="Home"

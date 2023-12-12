@@ -2,6 +2,7 @@
 import useCartStore from "@/store/cartStore";
 import useProductsStore from "@/store/productsStore";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 export default function ProductSection() {
   const { filteredProducts } = useProductsStore();
@@ -19,10 +20,10 @@ export default function ProductSection() {
     <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 grid-cols-1 gap-x-8 gap-y-12">
       {filteredProducts.map((product) => (
         <div key={product.id} className="cursor-pointer">
-          <img
+          <Image
             src={product.images[0]}
             alt={product.title}
-            width="400px"
+            width={400}
             height={400}
             className="rounded-md shadow-sm aspect-[1/1] object-cover object-top"
             onClick={() => handleProductClick(product.id)}
