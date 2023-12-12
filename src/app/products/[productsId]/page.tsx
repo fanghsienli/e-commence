@@ -1,7 +1,7 @@
 "use client";
 
 import type { Product } from "@/types";
-import { SetStateAction, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import useCartStore from "@/store/cartStore";
 
 import { Experience } from "../../../components/Experience";
@@ -55,24 +55,6 @@ export default function Products({
     fetchData();
   }, []);
 
-  const [selectedImage, setSelectedImage] = useState(0);
-
-  const prevSlide = () => {
-    if (product) {
-      setSelectedImage((prev) =>
-        prev === 0 ? product.images.length - 1 : prev - 1
-      );
-    }
-  };
-
-  const nextSlide = () => {
-    if (product) {
-      setSelectedImage((prev) =>
-        prev === product.images.length - 1 ? 0 : prev + 1
-      );
-    }
-  };
-
   const handleAddToCartClick = () => {
     if (product) {
       if (!cartItems.find((x) => x.id === product.id)) {
@@ -97,26 +79,6 @@ export default function Products({
         </div>
 
         <div className="flex gap-5 w-full h-32 pt-5">
-          <button
-            className="text-gray-600 hover:text-gray-400"
-            onClick={prevSlide}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              className="w-6 h-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M15.75 19.5L8.25 12l7.5-7.5"
-              />
-            </svg>
-          </button>
-
           {product.images.map((image, index) => (
             <a
               key={index}
@@ -130,26 +92,6 @@ export default function Products({
               />
             </a>
           ))}
-
-          <button
-            className="text-gray-600 hover:text-gray-400"
-            onClick={nextSlide}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              className="w-6 h-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M8.25 4.5l7.5 7.5-7.5 7.5"
-              />
-            </svg>
-          </button>
         </div>
       </div>
       <div className="mt-4 lg:row-span-2 lg:mt-0">
