@@ -1,7 +1,6 @@
 "use client";
 import useCartStore from "@/store/cartStore";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
 
 export default function CartItems() {
   const { cartItems, removeAllFromCart, updateQuantity } = useCartStore();
@@ -36,13 +35,13 @@ export default function CartItems() {
                 key={id}
               >
                 <div className="pb-4 md:pb-8 w-full md:w-40">
-                  <Image
+                  <img
                     className="w-full hidden md:block"
                     src={thumbnail}
                     alt={title}
                   />
                   {images?.length > 0 ? (
-                    <Image
+                    <img
                       className="w-full md:hidden"
                       src={images[0]}
                       alt={title}

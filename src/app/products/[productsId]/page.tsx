@@ -3,7 +3,7 @@
 import type { Product } from "@/types";
 import { useEffect, useState } from "react";
 import useCartStore from "@/store/cartStore";
-import Image from "next/image";
+
 import { Experience } from "@/components/Experience";
 import QuickView from "@/components/QuickView";
 
@@ -85,7 +85,7 @@ export default function Products({
               className="w-64 group cursor-pointer"
               onClick={() => toggleModal(index)}
             >
-              <Image
+              <img
                 src={image}
                 alt={image}
                 className="snap-center h-full w-full object-cover object-center group-hover:opacity-75"
