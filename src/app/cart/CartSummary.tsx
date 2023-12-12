@@ -1,8 +1,11 @@
 "use client";
 import useCartStore from "@/store/cartStore";
+import { useStripe, useElements } from "@stripe/react-stripe-js";
 
 export default function () {
   const { cartItems } = useCartStore();
+  const stripe = useStripe();
+  const elements = useElements();
 
   const getTotalOriginalPrice = () => {
     return (
@@ -25,7 +28,41 @@ export default function () {
     );
   };
 
-  const handleCheckoutClick = () => {};
+  const handleCheckoutClick = async () => {
+    if (!stripe || !elements) {
+      return;
+    }
+
+    const lineItems = cartItems.map((item) => ({
+      price_data: {
+        currency: "sgd",
+        product_data: {
+          name: item.title,
+        },
+        unit_amount: (item.price * (100 - item.discountPercentage)).toFixed(),
+      },
+      quantity: item.quantity,
+    }));
+
+    const response = await fetch("/api/create-checkout-session", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ lineItems }),
+    });
+
+    const session = await response.json();
+
+    const result = await stripe.redirectToCheckout({
+      sessionId: session.id,
+    });
+
+    if (result.error) {
+      console.error(result.error.message);
+    }
+  };
+
   return (
     <div className="flex flex-col justify-between items-start md:items-start px-4 py-6 md:p-6 xl:p-8">
       <h2 className="text-xl font-semibold leading-5 text-gray-800 mb-6">
