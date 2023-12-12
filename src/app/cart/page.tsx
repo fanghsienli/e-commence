@@ -100,14 +100,14 @@ export default function Cart() {
                       <div className="flex  justify-between space-x-8 items-start w-full">
                         <div className="flex flex-col">
                           <p className="text-base xl:text-lg leading-6">
-                            {`S$${price}`}
+                            {`S$${(
+                              (price * (100 - discountPercentage)) /
+                              100
+                            ).toFixed(2)}`}
                           </p>
                           <p className="text-base xl:text-lg leading-6">
                             <span className="text-red-300 line-through">
-                              {`S$${(
-                                (price * (100 - discountPercentage)) /
-                                100
-                              ).toFixed(2)}`}
+                              {`S$${price.toFixed(2)}`}
                             </span>
                           </p>
                         </div>
@@ -162,13 +162,12 @@ export default function Cart() {
               </div>
               <div className="flex justify-between items-center w-full">
                 <p className="text-base leading-4 text-gray-800">Discount</p>
-                <p className="text-base leading-4 text-gray-600">
-                  -
-                  {`S$${(
+                <p className="text-base leading-4 text-red-300">
+                  {`- S$${(
                     getTotalOriginalPrice() - getTotalDiscountedPrice()
                   ).toFixed(2)}`}
                   {getTotalOriginalPrice() !== 0
-                    ? `(-${(
+                    ? `(- ${(
                         (1 -
                           getTotalDiscountedPrice() / getTotalOriginalPrice()) *
                         100
