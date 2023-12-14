@@ -22,7 +22,6 @@ export default function CartItems() {
               id,
               title,
               thumbnail,
-              images,
               brand,
               category,
               description,
@@ -31,22 +30,15 @@ export default function CartItems() {
               quantity,
             }) => (
               <div
-                className="mt-4 md:mt-6 flex  flex-col md:flex-row justify-start items-start md:items-center md:space-x-6 xl:space-x-8 w-full "
+                className="mt-4 sm:mt-6 flex flex-col md:flex-row justify-start items-start md:items-center md:space-x-6 xl:space-x-8 w-full "
                 key={id}
               >
-                <div className="pb-4 md:pb-8 w-full md:w-40">
+                <div className="w-full h-80 sm:h-70 sm:w-70 md:h-60 md:w-60 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                   <img
-                    className="w-full hidden md:block"
                     src={thumbnail}
                     alt={title}
+                    className="h-full w-full object-cover object-center"
                   />
-                  {images?.length > 0 ? (
-                    <img
-                      className="w-full md:hidden"
-                      src={images[0]}
-                      alt={title}
-                    />
-                  ) : null}
                 </div>
                 <div className="border-b border-gray-200 md:flex-row flex-col flex justify-between items-start w-full  pb-8 space-y-4 md:space-y-0">
                   <div

@@ -1,9 +1,9 @@
 "use client";
 import { useEffect, useState } from "react";
 import Range from "@/components/Range";
+import Checkbox from "@/components/Checkbox";
 import useProductsStore from "@/store/productsStore";
 import { useRouter } from "next/navigation";
-import Checkbox from "@/components/Checkbox";
 import { convertValidStringQueries } from "@/utilies";
 import Filter from "./Filter";
 
@@ -92,7 +92,7 @@ export default function FilterSection() {
   }
 
   return (
-    <div className="col-span-2 space-y-6 sticky top-12 h-fit">
+    <div className="col-span-2 space-y-6 h-fit flex flex-col gap-5 md:block">
       <Filter title="Categories">
         {categoriesOptions?.length > 0
           ? categoriesOptions.map((option) => (

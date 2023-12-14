@@ -1,5 +1,4 @@
 "use client";
-import FilterSection from "./FilterSection";
 import ProductSection from "./ProductSection";
 
 import { useEffect } from "react";
@@ -26,10 +25,9 @@ export default function Collections() {
   }, [categories]);
 
   return (
-    <main className="max-w-full mx-auto px-4">
-      <div className="grid grid-cols-8 py-8 gap-10">
-        <FilterSection />
-        <div className="col-span-6">
+    <main className="min-h-screen flex justify-center">
+      <div className="max-w-screen-2xl w-full mx-4 md:mx-40 py-4">
+        <div className="text-center">
           <ProductSection />
         </div>
       </div>
